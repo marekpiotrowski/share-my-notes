@@ -22,4 +22,4 @@ class Session:
     name = Column(String(100))
     password = Column(String(100))
 
-    notes = relationship("Note", back_populates="note")
+    # notes = relationship("Note", back_populates="note")

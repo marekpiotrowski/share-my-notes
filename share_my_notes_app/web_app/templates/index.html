@@ -1,5 +1,49 @@
 <!doctype html>
-<title>Hello from Flask</title>
-<body>
-  <h1>Hello!</h1>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='presentation/lib/js/angular.js') }}"></script>
+  <script src="{{ url_for('static', filename='presentation/app.js') }}"></script>
+  <script src="{{ url_for('static', filename='presentation/lib/js/modal.directive.js') }}"></script>
+  <script src="{{ url_for('static', filename='presentation/lib/js/modal.service.js') }}"></script>
+  <script src="{{ url_for('static', filename='presentation/index.js') }}"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='presentation/style.css') }}"">
+  <link rel="stylesheet" href="{{ url_for('static', filename='presentation/lib/css/modal.css') }}"">
+
+  <title>Hello from Flask</title>
+</head>
+<body ng-app="shareMyNotesApp">
+  <div class="container-fluid" ng-controller="SessionController">
+    <div class="jumbotron share-my-notes-start">
+      <h1 class="display-4">Share My Notes</h1>
+      <p class="lead">To start writing notes, either create a new session or open some of the already existing sessions. It's gonna aggregate multiple notes for your convenience.</p>
+      <hr class="my-4">
+      <p>Session requires name and password so that nobody can steal your notes!</p>
+      <!-- <div ng-controller="SessionController">
+        {{ greeting|angular }}
+      </div> -->
+      <button class="btn btn-primary btn-lg" ng-click="vm.openModal('custom-modal-1')">New session...</button>
+      <button class="btn btn-success btn-lg" ng-click="openSession()"">Open session...</button>
+    </div>
+    <modal id="custom-modal-1">
+      <div class="modal">
+        <div class="modal-body">
+          <h1>A Custom Modal!</h1>
+          <p>
+            Home page text: <input type="text" ng-model="vm.bodyText" />
+          </p>
+          <button ng-click="vm.closeModal('custom-modal-1');">Close</button>
+        </div>
+      </div>
+      <div class="modal-background"></div>
+    </modal>
+  </div>
 </body>

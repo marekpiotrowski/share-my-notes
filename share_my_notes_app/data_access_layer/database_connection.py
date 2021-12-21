@@ -16,13 +16,5 @@ class DatabaseConnection:
 
         mapper_registry.metadata.create_all(self.__engine)
 
-    # def __drop_db(self):
-        # for tbl in reversed(mapper_registry.metadata.sorted_tables):
-            # engine.execute(tbl.delete())
-
     def get_engine(self):
         return self.__engine
-
-        # with engine.connect() as conn:
-            # result = conn.execute(text("show tables;"))
-            # print(result.all())

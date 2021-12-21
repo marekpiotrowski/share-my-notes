@@ -17,9 +17,9 @@ def populate_db():
         session.commit()
 
     with SqlSession(db_connection.get_engine()) as session:
-        note_1 = Note(id=1, content="some content 1", session_id=1)
-        note_2 = Note(id=2, content="some content 2", session_id=1)
-        note_3 = Note(id=3, content="some content 3", session_id=2)
+        note_1 = Note(id=1, title="title 1", content="some content 1", session_id=1)
+        note_2 = Note(id=2, title="title 2", content="some content 2", session_id=1)
+        note_3 = Note(id=3, title="title 3", content="some content 3", session_id=2)
         session.add(note_1)
         session.add(note_2)
         session.add(note_3)

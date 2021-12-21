@@ -14,6 +14,7 @@ class AlchemyEncoder(json.JSONEncoder):
                 data = obj.__getattribute__(field)
                 try:
                     if isinstance(data, datetime.datetime):
+                        # TODO probably would make sense to dump full datetime info, for now it's enough
                         data = data.strftime("%d/%m/%Y")
                     json.dumps(data) # this will fail on non-encodable values, like other classes
                     fields[field] = data

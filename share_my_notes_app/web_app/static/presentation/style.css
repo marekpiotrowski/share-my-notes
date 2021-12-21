@@ -5,3 +5,7 @@
 .modal-backdrop {
   opacity: 0.5;
 }
+
+.add-note-btn {
+  margin-bottom: 10px;
+}

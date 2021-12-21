@@ -1,7 +1,6 @@
 import pathlib
 
 from flask import Flask
-from flask_triangle import Triangle
 
 from share_my_notes_app.data_access_layer.database_connection import DatabaseConnection
 
@@ -14,7 +13,6 @@ if __name__ == "__main__":
     template_dir = pathlib.Path(__file__).parent.resolve() / 'web_app' / 'templates'
     static_dir = pathlib.Path(__file__).parent.resolve() / 'web_app' / 'static'
     app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
-    Triangle(app)
 
     db_connection = DatabaseConnection()
 

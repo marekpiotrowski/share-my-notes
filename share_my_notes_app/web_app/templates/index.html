@@ -8,13 +8,15 @@
     integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="{{ url_for('static', filename='presentation/lib/js/angular.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js" integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+
   <script src="{{ url_for('static', filename='presentation/app.js') }}"></script>
-  <script src="{{ url_for('static', filename='presentation/lib/js/modal.directive.js') }}"></script>
-  <script src="{{ url_for('static', filename='presentation/lib/js/modal.service.js') }}"></script>
   <script src="{{ url_for('static', filename='presentation/index.js') }}"></script>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.css" integrity="sha512-MgmHvAV9+J6vn9RRw8fAcnyEw0he3DMFh9z6VNcGUKJe9BC4m1MisLrgOJbfCd2HtjM1vzUo6HdhZFRdp7qNPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" href="{{ url_for('static', filename='presentation/style.css') }}"">
   <link rel="stylesheet" href="{{ url_for('static', filename='presentation/lib/css/modal.css') }}"">
 
@@ -30,20 +32,21 @@
       <!-- <div ng-controller="SessionController">
         {{ greeting|angular }}
       </div> -->
-      <button class="btn btn-primary btn-lg" ng-click="vm.openModal('custom-modal-1')">New session...</button>
+      <button class="btn btn-primary btn-lg" ng-click="open()">New session...</button>
       <button class="btn btn-success btn-lg" ng-click="openSession()"">Open session...</button>
     </div>
-    <modal id="custom-modal-1">
-      <div class="modal">
-        <div class="modal-body">
-          <h1>A Custom Modal!</h1>
-          <p>
-            Home page text: <input type="text" ng-model="vm.bodyText" />
-          </p>
-          <button ng-click="vm.closeModal('custom-modal-1');">Close</button>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">I'm a modal!</h3>
         </div>
-      </div>
-      <div class="modal-background"></div>
-    </modal>
+        <div class="modal-body" id="modal-body">
+
+            <div>TEST</div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button">OK</button>
+            <button class="btn btn-warning" type="button">Cancel</button>
+        </div>
+    </script>
   </div>
 </body>

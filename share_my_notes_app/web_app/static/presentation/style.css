@@ -1,3 +1,7 @@
 .share-my-notes-start {
   margin-top:10px;
 }
+
+.modal-backdrop {
+  opacity: 0.5;
+}

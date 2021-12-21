@@ -1,1 +1,1 @@
-var shareMyNotesApp = angular.module('shareMyNotesApp', []);
+var shareMyNotesApp = angular.module('shareMyNotesApp', ['ui.bootstrap']);

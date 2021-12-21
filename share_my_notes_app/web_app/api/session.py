@@ -15,7 +15,7 @@ class SessionApi:
     @staticmethod
     def register_routes(app):
         app.add_url_rule('/sessions', view_func=SessionApi.__get_all_sessions)
-        app.add_url_rule('/session', view_func=SessionApi.__add_session, methods=['POST'])
+        app.add_url_rule('/session', view_func=SessionApi.__add_get_session, methods=['POST', 'GET'])
 
 
     @staticmethod
@@ -25,7 +25,7 @@ class SessionApi:
         return json.dumps(sessions, cls=AlchemyEncoder)
 
     @staticmethod
-    def __add_session() -> dict:
+    def __add_get_session() -> dict:
         if request.method == 'POST':
             content = request.get_json(silent=True)
             new_session = Session(name=content['name'], password=content['password'])
@@ -34,3 +34,8 @@ class SessionApi:
                 sql_session.commit()
                 sql_session.refresh(new_session)
             return json.dumps(new_session, cls=AlchemyEncoder)
+        elif request.method == "GET":
+            session_name = request.args.get('name')
+            with SqlSession(SessionApi.__engine) as session:
+                result = session.query(Session).filter(Session.name == session_name).first()
+            return json.dumps(result, cls=AlchemyEncoder)

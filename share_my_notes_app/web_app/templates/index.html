@@ -9,6 +9,8 @@
   <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
 
   <script src="{{ url_for('static', filename='presentation/app.js') }}"></script>
+  <script src="{{ url_for('static', filename='presentation/service/note.js') }}"></script>
+  <script src="{{ url_for('static', filename='presentation/service/session.js') }}"></script>
   <script src="{{ url_for('static', filename='presentation/index.js') }}"></script>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -25,8 +27,8 @@
       <p class="lead">To start writing notes, either create a new session or open some of the already existing sessions. It's gonna aggregate multiple notes for your convenience.</p>
       <hr class="my-4">
       <p>Session requires name and password so that nobody can steal your notes!</p>
-      <button class="btn btn-primary btn-lg" ng-click="open()">New session...</button>
-      <button class="btn btn-success btn-lg" ng-click="openSession()"">Open session...</button>
+      <button class="btn btn-primary btn-lg" ng-click="open('Create new session')">New session...</button>
+      <button class="btn btn-success btn-lg" ng-click="open('Open session')">Open session...</button>
     </div>
     <div>
       <div id="accordion">
@@ -72,14 +74,13 @@
                 </div>
               </div>
             </div>
-{% endraw %}
           </div>
         </div>
       </div>
     </div>
     <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
-            <h3 class="modal-title" id="modal-title">Create new session</h3>
+            <h3 class="modal-title" id="modal-title">{{ ctrl.modalTitle }}</h3>
         </div>
         <div class="modal-body" id="modal-body">
           <form>
@@ -100,3 +101,4 @@
     </script>
   </div>
 </body>
+{% endraw %}

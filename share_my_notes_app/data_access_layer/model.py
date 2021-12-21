@@ -1,7 +1,10 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, Text
+import datetime
+
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, Text, DateTime
 
 from sqlalchemy.orm import registry
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 
 mapper_registry = registry()
 
@@ -12,7 +15,9 @@ class Note:
     id = Column(Integer, primary_key=True)
     content = Column(Text)
     session_id = Column(Integer, ForeignKey('session.id'))
-
+    title = Column(String(255))
+    created_date = Column(DateTime)
+    expires_on = Column(DateTime)
 
 @mapper_registry.mapped
 class Session:

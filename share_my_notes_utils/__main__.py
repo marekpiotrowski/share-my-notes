@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session as SqlSession
 
 from share_my_notes_app.data_access_layer.model import Note, Session
 from share_my_notes_app.data_access_layer.database_connection import DatabaseConnection
+from share_my_notes_app.data_access_layer.model import mapper_registry
 
 def populate_db():
     db_connection = DatabaseConnection()
@@ -24,10 +25,18 @@ def populate_db():
         session.add(note_3)
         session.commit()
 
+def drop_db():
+    db_connection = DatabaseConnection()
+
+    Note.__table__.drop(db_connection.get_engine())
+    Session.__table__.drop(db_connection.get_engine())
+
 if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd == "populate_db":
         populate_db()
+    elif cmd == "drop_db":
+        drop_db()
     else:
         print(f"Unknown command: {cmd}")
         exit(-1)

@@ -52,6 +52,21 @@
                         }
                     }).then((response) => {
                         console.log("session created.", response.data);
+                        $http({
+                            method: "POST",
+                            url: "/note",
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            data: {
+                                title: "Example title",
+                                content: "Example content",
+                                sessionId: response.data.id
+                            }
+                        }).then((notePostResponse) => {
+                            console.log(notePostResponse.data);
+                            response.data.notes = [notePostResponse.data];
+                        });
                         $scope.openedSessions.push(response.data);
                         console.log($scope.openedSessions);
                     });

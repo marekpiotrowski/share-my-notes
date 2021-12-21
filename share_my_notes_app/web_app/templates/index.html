@@ -56,28 +56,30 @@
             <div id="{{ 'session' + session.id }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body">
                 <button class="btn btn-primary add-note-btn">Add note</button>
-                <div class="list-group">
-                  <div class="list-group-item flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">Note #1</h5>
-                      <small>3 days ago</small>
+                <div ng-repeat="note in session.notes">
+                  <div class="list-group">
+                    <div class="list-group-item flex-column align-items-start">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Note #{{note.id}}</h5>
+                        <small>Created: {{note.created_date}}</small>
+                      </div>
+                      <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Note title</label>
+                          <input ng-model="note.title" type="text" class="form-control" placeholder="Title">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Note</label>
+                          <textarea ng-model="note.content" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Expires on</label>
+                          <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+                        </div>
+                        <button class="btn btn-primary">Save</button>
+                        <button class="btn btn-success">Remove</button>
+                      </form>
                     </div>
-                    <form>
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">Note title</label>
-                        <input type="text" class="form-control" placeholder="Title">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Note</label>
-                        <textarea class="form-control" rows="3"></textarea>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Expires on</label>
-                        <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
-                      </div>
-                      <button class="btn btn-primary">Save</button>
-                      <button class="btn btn-success">Remove</button>
-                    </form>
                   </div>
                   <!-- TODO change to WYSIWYG editor! -->
                 </div>

@@ -12,7 +12,7 @@ class DatabaseConnection:
         if not connection_string:
             raise ValueError("Empty connection string.")
 
-        self.__engine = create_engine(connection_string)
+        self.__engine = create_engine(connection_string, echo=True)
 
         mapper_registry.metadata.create_all(self.__engine)
 

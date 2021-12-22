@@ -4,6 +4,7 @@ from passlib.hash import sha256_crypt
 from sqlalchemy.orm import Session as SqlSession
 from sqlalchemy.orm import load_only
 from flask import request, Response
+import sqlalchemy as sa
 
 from share_my_notes_app.data_access_layer.model import Session
 from share_my_notes_app.web_app.api.alchemy_encoder import AlchemyEncoder

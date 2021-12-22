@@ -3,3 +3,4 @@ black==21.12b0
 sqlalchemy==1.4.28
 pymysql==1.0.2
 passlib==1.7.4
+selenium==4.1.0

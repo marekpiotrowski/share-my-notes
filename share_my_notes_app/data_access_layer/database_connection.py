@@ -9,6 +9,7 @@ from share_my_notes_app.data_access_layer.model import mapper_registry
 class DatabaseConnection:
     def __init__(self):
         connection_string = os.getenv('DB_CONNECTION_STRING')
+        print("Connection string: ", connection_string)
         if not connection_string:
             raise ValueError("Empty connection string.")
 

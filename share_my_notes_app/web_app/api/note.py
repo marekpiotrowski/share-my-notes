@@ -36,7 +36,6 @@ class NoteApi:
             if not sha256_crypt.verify(supplied_password, parent_session.password):
                 return Response('Access denied', 401)
             notes = session.query(Note).filter(Note.session_id == session_id).all()
-            print(json.dumps(notes, cls=AlchemyEncoder))
         return json.dumps(notes, cls=AlchemyEncoder)
 
     @staticmethod
@@ -52,14 +51,12 @@ class NoteApi:
                 sql_session.add(new_note)
                 sql_session.commit()
                 sql_session.refresh(new_note)
-                print(json.dumps(new_note, cls=AlchemyEncoder))
             return json.dumps(new_note, cls=AlchemyEncoder)
 
     @staticmethod
     def __update_note(note_id) -> dict:
         if request.method == 'PUT':
             note_data = request.get_json(silent=True)
-            print("NOTE DATA", note_data)
             with SqlSession(NoteApi.__engine) as sql_session:
                 edited_note = sql_session.query(Note).filter(Note.id == note_id).first()
                 edited_note.content = note_data['content']

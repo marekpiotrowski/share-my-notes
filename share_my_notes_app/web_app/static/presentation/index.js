@@ -92,7 +92,7 @@
             return;
           }
           sessionService.getSessionByName(sessionData['sessionName'],
-              sessionData['sessionPassword']).then((response) => {
+            sessionData['sessionPassword']).then((response) => {
             sessionService.getSessionNotes(response.data.id, sessionData['sessionPassword']).then((noteResponse) => {
               console.log(noteResponse.data);
               var sessionNotes = noteResponse.data;

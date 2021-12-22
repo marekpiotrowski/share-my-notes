@@ -20,20 +20,20 @@ angular.module('shareMyNotesApp').factory('sessionService', ['$http', function($
     });
   }
 
-  function getSessionByName(sessionName) {
+  function getSessionByName(sessionName, sessionPassword) {
     return $http({
         method: "GET",
-        url: "/session?name=" + sessionName,
+        url: "/session?name=" + sessionName + "&password=" + sessionPassword,
         headers: {
             'Content-Type': 'application/json'
         }
     });
   }
 
-  function getSessionNotes(sessionId) {
+  function getSessionNotes(sessionId, password) {
     return $http({
         method: "GET",
-        url: "/notes/session/" + sessionId,
+        url: "/notes/session/" + sessionId + "?password=" + password,
         headers: {
             'Content-Type': 'application/json'
         }

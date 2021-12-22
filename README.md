@@ -73,6 +73,17 @@ $ source /opt/share_my_notes_venv/bin/activate
 
 **TODO** integration test has problems with killing the python web app, pkill has to be done manually =(
 
+# Deployment
+
+Currently the app is deployed in the Azure. To deploy, issue the following from the repo root:
+
+```
+$ az acr build --registry <registry_name> --image share-my-notes-image --build-arg VERSION=${VERSION} .
+```
+
+and then simply create the container instance using that image. It's also required to set up some publicly
+available database and set the connection string correctly (DB_CONNECTION_STRING env).
+
 # Tech debt todo-list
 
 1. Preferably use react rather than the old-school angularjs (not feeling too comfortable with it yet,

@@ -27,7 +27,7 @@ class TestCreateSession(unittest.TestCase):
         my_env = os.environ.copy()
         my_env['DB_CONNECTION_STRING'] = 'sqlite:////tmp//test.db'
         proc = subprocess.Popen("python -m share_my_notes_app", env=my_env, shell=True)
-        time.sleep(1)
+        time.sleep(3)
 
         # WHEN
         driver.get("http://127.0.0.1:5000/")

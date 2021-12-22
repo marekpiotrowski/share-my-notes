@@ -10,11 +10,11 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt update
 RUN apt install python3.8 -y
 RUN apt install python3.8-venv -y
+RUN apt install wget -y
+RUN apt install firefox -y
 
 RUN python3 -m venv /opt/share_my_notes_venv
 COPY requirements.txt .
-
-RUN apt install wget -y
 
 RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux32.tar.gz
 RUN mkdir /tmp/geckodriver_dir
@@ -24,4 +24,6 @@ RUN export PATH=$PATH:/tmp/geckodriver_dir
 
 RUN . /opt/share_my_notes_venv/bin/activate && pip install -r requirements.txt
 
-RUN apt install firefox -y
+COPY share_my_notes_app /share_my_notes_app
+
+CMD . /opt/share_my_notes_venv/bin/activate && python -m share_my_notes_app

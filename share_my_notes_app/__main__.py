@@ -23,4 +23,4 @@ if __name__ == "__main__":
     SessionApi.register_routes(app)
     Index.register_routes(app)
 
-    app.run()
+    app.run(host="0.0.0.0")
